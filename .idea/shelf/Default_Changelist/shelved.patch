@@ -1,0 +1,840 @@
+Index: .idea/.name
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.name b/.idea/.name
+new file mode 100644
+--- /dev/null	(date 1657827390703)
++++ b/.idea/.name	(date 1657827390703)
+@@ -0,0 +1,1 @@
++Sirius
+\ No newline at end of file
+Index: .idea/deploymentTargetDropDown.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/deploymentTargetDropDown.xml b/.idea/deploymentTargetDropDown.xml
+new file mode 100644
+--- /dev/null	(date 1657836763272)
++++ b/.idea/deploymentTargetDropDown.xml	(date 1657836763272)
+@@ -0,0 +1,28 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="deploymentTargetDropDown">
++    <runningDeviceTargetSelectedWithDropDown>
++      <Target>
++        <type value="RUNNING_DEVICE_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\User\.android\avd\Pixel_API_28.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </runningDeviceTargetSelectedWithDropDown>
++    <targetSelectedWithDropDown>
++      <Target>
++        <type value="QUICK_BOOT_TARGET" />
++        <deviceKey>
++          <Key>
++            <type value="VIRTUAL_DEVICE_PATH" />
++            <value value="C:\Users\User\.android\avd\Pixel_API_28.avd" />
++          </Key>
++        </deviceKey>
++      </Target>
++    </targetSelectedWithDropDown>
++    <timeTargetWasSelectedWithDropDown value="2022-07-14T22:04:41.572591800Z" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.sirius.test_app\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@mipmap/ic_launcher\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@mipmap/ic_launcher_round\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/Theme.Sirius\">\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:exported=\"true\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/AndroidManifest.xml b/app/src/main/AndroidManifest.xml
+--- a/app/src/main/AndroidManifest.xml	(revision f2d234ab0b5fa3004ad92e8642c88be9ae4a60e8)
++++ b/app/src/main/AndroidManifest.xml	(date 1657837544691)
+@@ -20,4 +20,4 @@
+         </activity>
+     </application>
+ 
+-</manifest>
+\ No newline at end of file
++</manifest>
+Index: app/src/main/java/com/sirius/test_app/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.sirius.test_app\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/sirius/test_app/MainActivity.kt b/app/src/main/java/com/sirius/test_app/MainActivity.kt
+--- a/app/src/main/java/com/sirius/test_app/MainActivity.kt	(revision f2d234ab0b5fa3004ad92e8642c88be9ae4a60e8)
++++ b/app/src/main/java/com/sirius/test_app/MainActivity.kt	(date 1657836057646)
+@@ -2,10 +2,33 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
++import androidx.recyclerview.widget.LinearLayoutManager
++import androidx.recyclerview.widget.RecyclerView
+ 
+ class MainActivity : AppCompatActivity() {
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_main)
++        val recyclerViewReviews = findViewById<RecyclerView>(R.id.Reviews)
++        recyclerViewReviews.layoutManager = LinearLayoutManager(this)
++
++        val reviewList = mutableListOf(
++            ReviewModel(
++                userImage = "https://ibb.co/WcJMjSw",
++                userName = "Auguste Conte",
++                date = "February 14, 2019",
++                message = "Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers."
++            ),
++            ReviewModel(
++                userImage = "https://ibb.co/p1q4QZr",
++                userName = "Jang Marcelino",
++                date = "February 14, 2019",
++                message =
++                "Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers."
++            )
++        )
++        val adapter = ReviewsAdapter(reviewList)
++        recyclerViewReviews.adapter = adapter
++
+     }
+-}
+\ No newline at end of file
++}
+Index: app/src/main/res/values/arrays.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/arrays.xml b/app/src/main/res/values/arrays.xml
+new file mode 100644
+--- /dev/null	(date 1657836499934)
++++ b/app/src/main/res/values/arrays.xml	(date 1657836499934)
+@@ -0,0 +1,4 @@
++<?xml version="1.0" encoding="utf-8"?>
++<resources>
++    <string-array name="com_google_android_gms_fonts_certs" />
++</resources>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1657841515008)
++++ b/.idea/misc.xml	(date 1657841515008)
+@@ -0,0 +1,26 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="DesignSurface">
++    <option name="filePathToZoomLevelMap">
++      <map>
++        <entry key="..\:/Users/User/android_test/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.343" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/drawable/button_style.xml" value="0.343" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/drawable/ic_baseline_star_24.xml" value="0.1795" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2525" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/drawable/rounded_button_style.xml" value="0.1965" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/drawable/rounded_corner.xml" value="0.1965" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/drawable/rounded_layout.xml" value="0.1965" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/font/montserrat_medium.xml" value="0.2869791666666667" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/font/roboto.xml" value="1.0" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/layout/activity_main.xml" value="0.25" />
++        <entry key="..\:/Users/User/android_test/app/src/main/res/layout/item_review.xml" value="0.33" />
++      </map>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/build/classes" />
++  </component>
++  <component name="ProjectType">
++    <option name="id" value="Android" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+new file mode 100644
+--- /dev/null	(date 1657832691839)
++++ b/.idea/gradle.xml	(date 1657832691839)
+@@ -0,0 +1,20 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="GradleMigrationSettings" migrationVersion="1" />
++  <component name="GradleSettings">
++    <option name="linkedExternalProjectsSettings">
++      <GradleProjectSettings>
++        <option name="testRunner" value="GRADLE" />
++        <option name="distributionType" value="DEFAULT_WRAPPED" />
++        <option name="externalProjectPath" value="$PROJECT_DIR$" />
++        <option name="modules">
++          <set>
++            <option value="$PROJECT_DIR$" />
++            <option value="$PROJECT_DIR$/app" />
++          </set>
++        </option>
++        <option name="resolveModulePerSourceSet" value="false" />
++      </GradleProjectSettings>
++    </option>
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/compiler.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/compiler.xml b/.idea/compiler.xml
+new file mode 100644
+--- /dev/null	(date 1657827390903)
++++ b/.idea/compiler.xml	(date 1657827390903)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="11" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1657827390932)
++++ b/.idea/vcs.xml	(date 1657827390932)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources>\r\n    <string name=\"app_name\">Sirius</string>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/strings.xml b/app/src/main/res/values/strings.xml
+--- a/app/src/main/res/values/strings.xml	(revision f2d234ab0b5fa3004ad92e8642c88be9ae4a60e8)
++++ b/app/src/main/res/values/strings.xml	(date 1657839342184)
+@@ -1,3 +1,16 @@
+ <resources>
+     <string name="app_name">Sirius</string>
++    <string name="text_about_dota2">Dota 2 is a multiplayer online battle arena (MOBA) game which has two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the \'Antent\', whilst defending their own.</string>
++    <string name="moba">MOBA</string>
++    <string name="dota_2">DoTA 2</string>
++    <string name="_70m">70M</string>
++    <string name="install_text">Install</string>
++    <string name="three_dots">.\n.\n.</string>
++    <string name="the_arrow"><![CDATA[<-]]></string>
++    <string name="Multiplayer">MULTIPLAYER</string>
++    <string name="Strategy">STRATEGY</string>
++    <string name="ReviewRating">Review and Rating</string>
++    <string name="num_rating">4.9</string>
++    <string name="amount_of_reviews">70M Reviews</string>
++    <string name="dota2_logo">dota2 logo</string>
+ </resources>
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".MainActivity\">\r\n\r\n    <!-- Место для верстки -->\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/activity_main.xml b/app/src/main/res/layout/activity_main.xml
+--- a/app/src/main/res/layout/activity_main.xml	(revision f2d234ab0b5fa3004ad92e8642c88be9ae4a60e8)
++++ b/app/src/main/res/layout/activity_main.xml	(date 1657846495492)
+@@ -4,8 +4,366 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:background="#050B18"
+     tools:context=".MainActivity">
+ 
+-    <!-- Место для верстки -->
++    <Button
++        android:layout_width="327dp"
++        android:layout_height="64dp"
++        android:layout_marginLeft="24dp"
++        android:layout_marginRight="24dp"
++        android:layout_marginBottom="36dp"
++        android:backgroundTint="@color/yellow"
++        android:text="@string/install_text"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent" />
++
++    <androidx.recyclerview.widget.RecyclerView
++        android:layout_width="match_parent"
++        android:layout_height="match_parent"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="@+id/imageView"
++        app:layout_constraintVertical_bias="0.0" />
++
++    <Button
++        android:id="@+id/button2"
++        android:layout_width="56dp"
++        android:layout_height="56dp"
++        android:layout_margin="56dp"
++        android:background="@drawable/rounded_button_style"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <Button
++        android:id="@+id/button3"
++        android:layout_width="56dp"
++        android:layout_height="56dp"
++        android:layout_margin="56dp"
++        android:layout_marginTop="272dp"
++        android:layout_marginEnd="24dp"
++        android:background="@drawable/rounded_button_style"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <ImageView
++        android:id="@+id/imageView"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:contentDescription="@string/dota2_logo"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:srcCompat="@drawable/image_16" />
++
++    <TextView
++        android:id="@+id/textView"
++        android:layout_width="0dp"
++        android:layout_height="100dp"
++        android:layout_marginStart="24dp"
++        android:layout_marginTop="100dp"
++        android:layout_marginEnd="24dp"
++        android:text="@string/text_about_dota2"
++        android:textColor="#EEF2FB"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/imageView" />
++
++    <LinearLayout
++        android:id="@+id/rectangle_box"
++        android:layout_width="250dp"
++        android:layout_height="120dp"
++        android:layout_marginStart="24dp"
++        app:layout_constraintBottom_toBottomOf="@+id/imageView"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/imageView"
++        app:layout_constraintVertical_bias="0.0">
++
++        <RelativeLayout
++            android:layout_width="100dp"
++            android:layout_height="100dp"
++            android:layout_marginStart="0dp"
++            android:layout_marginTop="10dp"
++            android:layout_marginBottom="0dp"
++            android:background="@drawable/rounded_layout">
++
++
++            <ImageView
++                android:id="@+id/borderImage"
++                android:layout_width="wrap_content"
++                android:layout_height="wrap_content"
++                android:layout_alignParentStart="true"
++                android:layout_alignParentTop="true"
++                android:layout_alignParentEnd="true"
++                android:layout_alignParentBottom="true"
++                android:layout_marginStart="15dp"
++                android:layout_marginTop="15dp"
++                android:layout_marginEnd="15dp"
++                android:layout_marginBottom="15dp"
++                android:background="@drawable/dota_logo"
++                android:scaleType="centerInside" />
++
++        </RelativeLayout>
+ 
+-</androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
++    </LinearLayout>
++
++    <TextView
++        android:id="@+id/textView3"
++        android:layout_width="53dp"
++        android:layout_height="22dp"
++        android:layout_marginStart="24dp"
++        android:background="@drawable/rounded_corner"
++        android:fontFamily="@font/roboto"
++        android:gravity="center"
++        android:text="@string/moba"
++        android:textColor="@color/white"
++        android:textSize="11sp"
++        app:layout_constraintBottom_toTopOf="@+id/textView"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/rectangle_box" />
++
++    <TextView
++        android:layout_width="93dp"
++        android:layout_height="22dp"
++        android:layout_marginStart="10dp"
++        android:background="@drawable/rounded_corner"
++        android:fontFamily="@font/roboto"
++        android:gravity="center"
++        android:text="@string/Multiplayer"
++        android:textColor="@color/white"
++        android:textSize="11sp"
++        app:layout_constraintBottom_toTopOf="@+id/textView"
++        app:layout_constraintStart_toEndOf="@+id/textView3"
++        app:layout_constraintTop_toBottomOf="@+id/rectangle_box" />
++
++    <TextView
++        android:layout_width="73dp"
++        android:layout_height="22dp"
++        android:layout_marginStart="189dp"
++        android:layout_marginEnd="112dp"
++        android:background="@drawable/rounded_corner"
++        android:fontFamily="@font/roboto"
++        android:gravity="center"
++        android:text="@string/Strategy"
++        android:textColor="@color/white"
++        android:textSize="11sp"
++        app:layout_constraintBottom_toTopOf="@+id/textView"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/rectangle_box" />
++
++    <TextView
++        android:layout_width="70dp"
++        android:layout_height="36dp"
++        android:layout_marginStart="40dp"
++        android:gravity="center"
++        android:text="@string/dota_2"
++        android:textColor="#F8F7F7"
++        android:textStyle="bold"
++        app:layout_constraintBottom_toBottomOf="@+id/rectangle_box"
++        app:layout_constraintEnd_toEndOf="@+id/rectangle_box"
++        app:layout_constraintStart_toStartOf="@+id/rectangle_box"
++        app:layout_constraintTop_toTopOf="@+id/rectangle_box" />
++
++    <ImageView
++        android:id="@+id/imageView3"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="3dp"
++        android:layout_marginTop="64dp"
++        android:layout_marginEnd="20dp"
++        app:layout_constraintBottom_toBottomOf="@+id/rectangle_box"
++        app:layout_constraintEnd_toEndOf="@+id/rectangle_box"
++        app:layout_constraintStart_toStartOf="@+id/rectangle_box"
++        app:layout_constraintTop_toTopOf="@+id/rectangle_box"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView6"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="12dp"
++        android:layout_marginTop="30dp"
++        app:layout_constraintStart_toEndOf="@+id/textView11"
++        app:layout_constraintTop_toBottomOf="@+id/textView6"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView13"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="12dp"
++        android:layout_marginTop="30dp"
++        app:layout_constraintStart_toEndOf="@+id/textView11"
++        app:layout_constraintTop_toBottomOf="@+id/textView6"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView9"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="4dp"
++        android:layout_marginTop="30dp"
++        app:layout_constraintStart_toEndOf="@+id/imageView16"
++        app:layout_constraintTop_toBottomOf="@+id/textView6"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView15"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="4dp"
++        android:layout_marginTop="30dp"
++        app:layout_constraintStart_toEndOf="@+id/imageView14"
++        app:layout_constraintTop_toBottomOf="@+id/textView6"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView14"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="4dp"
++        android:layout_marginTop="30dp"
++        app:layout_constraintStart_toEndOf="@+id/imageView13"
++        app:layout_constraintTop_toBottomOf="@+id/textView6"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView16"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="3dp"
++        android:layout_marginTop="30dp"
++        app:layout_constraintStart_toEndOf="@+id/imageView15"
++        app:layout_constraintTop_toBottomOf="@+id/textView6"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView8"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="4dp"
++        android:layout_marginTop="64dp"
++        app:layout_constraintBottom_toBottomOf="@+id/rectangle_box"
++        app:layout_constraintStart_toEndOf="@+id/imageView7"
++        app:layout_constraintTop_toTopOf="@+id/rectangle_box"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView7"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="4dp"
++        android:layout_marginTop="64dp"
++        app:layout_constraintBottom_toBottomOf="@+id/rectangle_box"
++        app:layout_constraintStart_toEndOf="@+id/imageView4"
++        app:layout_constraintTop_toTopOf="@+id/rectangle_box"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView4"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="4dp"
++        android:layout_marginTop="64dp"
++        app:layout_constraintBottom_toBottomOf="@+id/rectangle_box"
++        app:layout_constraintStart_toEndOf="@+id/imageView5"
++        app:layout_constraintTop_toTopOf="@+id/rectangle_box"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView5"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="4dp"
++        android:layout_marginTop="64dp"
++        app:layout_constraintBottom_toBottomOf="@+id/rectangle_box"
++        app:layout_constraintStart_toEndOf="@+id/imageView3"
++        app:layout_constraintTop_toTopOf="@+id/rectangle_box"
++        app:srcCompat="@drawable/ic_baseline_star_24" />
++
++    <ImageView
++        android:id="@+id/imageView2"
++        android:layout_width="26dp"
++        android:layout_height="28dp"
++        app:layout_constraintBottom_toBottomOf="@+id/button2"
++        app:layout_constraintEnd_toEndOf="@+id/button2"
++        app:layout_constraintStart_toStartOf="@+id/button2"
++        app:layout_constraintTop_toTopOf="@+id/button2"
++        app:srcCompat="@drawable/arrow_left"
++        tools:ignore="ImageContrastCheck" />
++
++    <ImageView
++        android:id="@+id/imageView17"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        app:layout_constraintBottom_toBottomOf="@+id/button3"
++        app:layout_constraintEnd_toEndOf="@+id/button3"
++        app:layout_constraintStart_toStartOf="@+id/button3"
++        app:layout_constraintTop_toTopOf="@+id/button3"
++        app:srcCompat="@drawable/more_square" />
++
++    <TextView
++        android:layout_width="26dp"
++        android:layout_height="14dp"
++        android:layout_marginStart="10dp"
++        android:layout_marginTop="64dp"
++        android:gravity="center"
++        android:text="@string/_70m"
++        android:textColor="#536DFE"
++        android:textSize="12sp"
++        app:layout_constraintBottom_toBottomOf="@+id/rectangle_box"
++        app:layout_constraintStart_toEndOf="@+id/imageView8"
++        app:layout_constraintTop_toTopOf="@+id/rectangle_box" />
++
++    <TextView
++        android:id="@+id/textView6"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="24dp"
++        android:layout_marginTop="16dp"
++        android:text="@string/ReviewRating"
++        android:textColor="#EEF2FB"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView" />
++
++
++    <androidx.recyclerview.widget.RecyclerView
++        android:id="@+id/Reviews"
++        android:layout_width="300dp"
++        android:layout_height="140dp"
++        android:layout_marginTop="86dp"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="0.504"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView6" />
++
++    <TextView
++        android:id="@+id/textView11"
++        android:layout_width="69dp"
++        android:layout_height="59dp"
++        android:layout_marginStart="24dp"
++        android:layout_marginTop="12dp"
++        android:text="@string/num_rating"
++        android:textColor="#FFFFFF"
++        android:textSize="48sp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/textView6" />
++
++    <TextView
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="12dp"
++        android:layout_marginTop="9dp"
++        android:text="@string/amount_of_reviews"
++        android:textColor="#A8ADB7"
++        app:layout_constraintStart_toEndOf="@+id/textView11"
++        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
++
++
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/res/layout/item_review.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/layout/item_review.xml b/app/src/main/res/layout/item_review.xml
+new file mode 100644
+--- /dev/null	(date 1657836057656)
++++ b/app/src/main/res/layout/item_review.xml	(date 1657836057656)
+@@ -0,0 +1,52 @@
++<?xml version="1.0" encoding="utf-8"?>
++<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    xmlns:tools="http://schemas.android.com/tools"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++    <ImageView
++        android:id="@+id/imageView2"
++        android:layout_width="36dp"
++        android:layout_height="36dp"
++        android:layout_marginTop="14dp"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent"
++        app:srcCompat="@drawable/rounded_corner" />
++
++    <TextView
++        android:id="@+id/textView8"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginTop="10dp"
++        android:layout_marginStart="16dp"
++        android:text="Auguste Conte"
++        android:textColor="@color/white"
++        android:textSize="16sp"
++        app:layout_constraintStart_toEndOf="@+id/imageView2"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <TextView
++        android:id="@+id/textView9"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="16dp"
++        android:layout_marginTop="7dp"
++        android:text="February 14, 2019"
++        android:textColor="#66FFFFFF"
++        android:textSize="12sp"
++        app:layout_constraintStart_toEndOf="@+id/imageView2"
++        app:layout_constraintTop_toBottomOf="@+id/textView8" />
++
++    <TextView
++        android:id="@+id/textView10"
++        android:layout_width="300dp"
++        android:layout_height="200dp"
++        android:layout_marginStart="24dp"
++        android:layout_marginTop="16dp"
++        android:layout_marginEnd="24dp"
++        android:textColor="#A8ADB7"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
++</androidx.constraintlayout.widget.ConstraintLayout>
+Index: app/src/main/java/com/sirius/test_app/ReviewsAdapter.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/sirius/test_app/ReviewsAdapter.kt b/app/src/main/java/com/sirius/test_app/ReviewsAdapter.kt
+new file mode 100644
+--- /dev/null	(date 1657836057646)
++++ b/app/src/main/java/com/sirius/test_app/ReviewsAdapter.kt	(date 1657836057646)
+@@ -0,0 +1,46 @@
++package com.sirius.test_app
++
++import android.view.LayoutInflater
++import android.view.View
++import android.view.ViewGroup
++import android.widget.ImageView
++import android.widget.TextView
++import androidx.recyclerview.widget.RecyclerView
++
++class ReviewsAdapter(
++    val reviews: List<ReviewModel> = listOf(
++        ReviewModel(
++            userImage = "https://ibb.co/WcJMjSw",
++            userName = "Auguste Conte",
++            date = "February 14, 2019",
++            message = "“Once you start to learn its secrets, there’s a wild and exciting variety of play here that’s unmatched, even by its peers.”"
++        )
++    )
++) : RecyclerView.Adapter<ReviewsAdapter.ReviewViewHolder>() {
++
++    inner class ReviewViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
++
++    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReviewViewHolder {
++        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_review, parent, false)
++        return ReviewViewHolder(view)
++    }
++
++    override fun onBindViewHolder(holder: ReviewViewHolder, position: Int) {
++        holder.itemView.apply {
++            val review = reviews[position]
++            val userIconImage: ImageView = holder.itemView.findViewById(R.id.imageView2)
++            val imageStringAddress = review.userImage
++            val userName: TextView = holder.itemView.findViewById(R.id.textView8)
++            val reviewDate: TextView = holder.itemView.findViewById(R.id.textView9)
++            val messageText: TextView = holder.itemView.findViewById(R.id.textView10)
++            userName.text = review.userName
++            reviewDate.text = review.date
++            messageText.text = review.message
++        }
++
++    }
++
++    override fun getItemCount(): Int {
++        return reviews.size
++    }
++}
+Index: app/src/main/res/values/colors.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<resources>\r\n    <color name=\"purple_200\">#FFBB86FC</color>\r\n    <color name=\"purple_500\">#FF6200EE</color>\r\n    <color name=\"purple_700\">#FF3700B3</color>\r\n    <color name=\"teal_200\">#FF03DAC5</color>\r\n    <color name=\"teal_700\">#FF018786</color>\r\n    <color name=\"black\">#FF000000</color>\r\n    <color name=\"white\">#FFFFFFFF</color>\r\n</resources>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/colors.xml b/app/src/main/res/values/colors.xml
+--- a/app/src/main/res/values/colors.xml	(revision f2d234ab0b5fa3004ad92e8642c88be9ae4a60e8)
++++ b/app/src/main/res/values/colors.xml	(date 1657836057665)
+@@ -7,4 +7,5 @@
+     <color name="teal_700">#FF018786</color>
+     <color name="black">#FF000000</color>
+     <color name="white">#FFFFFFFF</color>
+-</resources>
+\ No newline at end of file
++    <color name="yellow">#F4D144</color>
++</resources>
+Index: .idea/.gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+new file mode 100644
+--- /dev/null	(date 1657827321190)
++++ b/.idea/.gitignore	(date 1657827321190)
+@@ -0,0 +1,3 @@
++# Default ignored files
++/shelf/
++/workspace.xml
+Index: app/src/main/res/font/roboto.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/font/roboto.xml b/app/src/main/res/font/roboto.xml
+new file mode 100644
+--- /dev/null	(date 1657836957619)
++++ b/app/src/main/res/font/roboto.xml	(date 1657836957619)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
++    app:fontProviderAuthority="com.google.android.gms.fonts"
++    app:fontProviderPackage="com.google.android.gms"
++    app:fontProviderQuery="Roboto"
++    app:fontProviderCerts="@array/com_google_android_gms_fonts_certs" />
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'com.android.application'\r\n    id 'org.jetbrains.kotlin.android'\r\n}\r\n\r\nandroid {\r\n    compileSdk 31\r\n\r\n    defaultConfig {\r\n        applicationId \"com.sirius.test_app\"\r\n        minSdk 21\r\n        targetSdk 31\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_1_8\r\n        targetCompatibility JavaVersion.VERSION_1_8\r\n    }\r\n    kotlinOptions {\r\n        jvmTarget = '1.8'\r\n    }\r\n}\r\n\r\ndependencies {\r\n\r\n    implementation 'androidx.core:core-ktx:1.8.0'\r\n    implementation 'androidx.appcompat:appcompat:1.4.2'\r\n    implementation 'com.google.android.material:material:1.6.1'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'\r\n    testImplementation 'junit:junit:4.13.2'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.3'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision f2d234ab0b5fa3004ad92e8642c88be9ae4a60e8)
++++ b/app/build.gradle	(date 1657836057639)
+@@ -29,6 +29,9 @@
+     kotlinOptions {
+         jvmTarget = '1.8'
+     }
++    buildFeatures {
++        viewBinding true
++    }
+ }
+ 
+ dependencies {
+@@ -37,7 +40,12 @@
+     implementation 'androidx.appcompat:appcompat:1.4.2'
+     implementation 'com.google.android.material:material:1.6.1'
+     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
++    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+     testImplementation 'junit:junit:4.13.2'
+     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+-}
+\ No newline at end of file
++
++    //glide impl
++    implementation 'com.github.bumptech.glide:glide:4.13.2'
++    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
++}
